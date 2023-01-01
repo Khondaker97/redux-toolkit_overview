@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useAppSelector } from "../../hooks";
 import { SelectAllPosts } from "./postsSlice";
+import styles from "./posts.module.css";
+import AddPostForm from "./AddPostForm";
 type Props = {};
 const PostsList = (props: Props) => {
   const posts = useAppSelector(SelectAllPosts);
@@ -12,10 +14,11 @@ const PostsList = (props: Props) => {
     </article>
   ));
   return (
-    <div>
-      <h2>Posts</h2>
+    <section className={styles.posts}>
+      <AddPostForm />
+      <h1>Posts</h1>
       {renderPosts}
-    </div>
+    </section>
   );
 };
 
