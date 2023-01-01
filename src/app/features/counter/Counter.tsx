@@ -1,6 +1,7 @@
 import React, { ChangeEvent, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { increment, decrement, reset } from "./counterSlice";
+import styles from "./counter.module.css";
 type Props = {};
 
 const Counter = (props: Props) => {
@@ -25,9 +26,9 @@ const Counter = (props: Props) => {
     setIncrement(value);
   };
   return (
-    <section>
+    <section className={styles.counter}>
       <h1>Counter : {count}</h1>
-      <div>
+      <div className={styles.buttonContainer}>
         <button
           aria-label="Increment value"
           onClick={() => dispatch(increment(1))}
@@ -47,19 +48,15 @@ const Counter = (props: Props) => {
           Decrement by 5
         </button>
       </div>
-      <div>
+      <div className={styles.buttonContainer && styles.inputWrapper}>
         <div>
           <input
             type="number"
             placeholder="Place your amount"
             value={incrementAmount}
             onChange={IncrementHandler}
-            style={{
-              outline: "none",
-              padding: "0.5rem",
-              borderRadius: "10px",
-              border: "1px solid salmon",
-            }}
+            className={styles.input}
+            style={error ? { border: "1px solid salmon" } : {}}
           />
           <span>{error}</span>
         </div>
